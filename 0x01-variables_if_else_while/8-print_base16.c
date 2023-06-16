@@ -10,9 +10,9 @@
 
 int main(void)
 {
-	char digit;
-       	int i;
-       	char letter;
+	char	digit;
+	int	i;
+	char	letter;
 
 	digit = '0';
 	letter = 'a';
