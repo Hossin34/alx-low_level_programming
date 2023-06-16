@@ -10,20 +10,27 @@
 
 int main(void)
 {
-	int num1, num2;
+	int i = 0;
+	int j;
+	int count = 0;
 
-	for (num1 = 0; num1 <= 8; num1++)
+	while (i <= 8)
 	{
-		for (num2 = num1 + 1; num2 <= 9; num2++)
+		j = i + 1;
+		while (j <= 9)
 		{
-			putchar(num1 + '0');
-			putchar(num2 + '0');
-			if (num1 != 8 || num2 != 9)
+			putchar(i + '0');
+			putchar(j + '0');
+			if (count != 44)
 			{
 				putchar(',');
 				putchar(' ');
 			}
+			j++;
+			count++;
 		}
+		i++;
 	}
+	putchar('\n');
 	return (0);
 }
