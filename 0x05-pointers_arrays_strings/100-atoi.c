@@ -5,30 +5,32 @@
  * @str: str
  * Return: int
  */
-
-int	_atoi(char *str)
+int _atoi(char *str)
 {
-	long	i;
-	long	sign;
-	long	num;
+	unsigned int count = 0, size = 0, num = 0, sign = 1, mult = 1, i;
 
-	i = 0;
-	sign = 1;
-	num = 0;
-	if (str[i] == '\0')
-		return (i);
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	while (*(str + count) != '\0')
 	{
-		if (str[i] == '-')
+		if (size > 0 && (*(str + count) < '0' || *(str + count) > '9'))
+			break;
+
+		if (*(str + count) == '-')
 			sign *= -1;
-		i++;
+
+		if ((*(str + count) >= '0') && (*(str + count) <= '9'))
+		{
+			if (size > 0)
+				mult *= 10;
+			size++;
+		}
+		count++;
 	}
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
+
+	for (i = count - size; i < count; i++)
 	{
-		num = num * 10 + (str[i] - 48);
-		i++;
+		num = num + ((*(str + i) - 48) * mult);
+		mult /= 10;
 	}
 	return (num * sign);
 }
+
