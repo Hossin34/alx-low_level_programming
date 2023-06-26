@@ -1,29 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
 /**
  * main - generates keygen.
  * Return: 0 on success
  */
-
 int main(void)
 {
-	int sum = 0;
+	int r = 0, c = 0;
+	time_t t;
 
-	srand(time(NULL));
-
-	while (sum < 2772)
+	srand((unsigned int) time(&t));
+	while (c < 2772)
 	{
-		int r = rand() % 128;
-
-		if (sum + r > 2772)
-			r = 2772 - sum;
-		sum += r;
-		putchar(r);
+		r = rand() % 128;
+		if ((c + r) > 2772)
+			break;
+		c = c + r;
+		printf("%c", r);
 	}
-	putchar(2772 - sum);
-
+	printf("%c\n", (2772 - c));
 	return (0);
 }
-

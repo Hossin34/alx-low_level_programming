@@ -6,7 +6,7 @@
  * Return: int
  */
 
-int	_atoi(const char *str)
+int	_atoi(char *str)
 {
 	long	i;
 	long	sign;
