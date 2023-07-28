@@ -7,6 +7,7 @@
  *
  * Return: the number of nodes
  */
+
 size_t print_list(const list_t *s)
 {
 	size_t nodes = 0;
@@ -16,11 +17,9 @@ size_t print_list(const list_t *s)
 		if (s->str == NULL)
 			printf("[%d] %s\n", 0, "(nil)");
 		else
-			printf("[%d] %s\n", s->len, s->str);
+			printf("[%u] %s\n", s->len, s->str);
 		s = s->next;
 		nodes++;
 	}
 	return (nodes);
 }
-
-
