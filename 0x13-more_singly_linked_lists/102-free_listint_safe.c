@@ -24,7 +24,7 @@ void free_listp2(listp_t **head)
 }
 
 /**
- * free_listint_safe - frees a listint_t list.
+ * free_listint_safe - frees a listint_t linked list.
  * @h: pointer to head of list
  *
  * Return: number of nodes in the list
@@ -32,10 +32,10 @@ void free_listp2(listp_t **head)
 size_t free_listint_safe(listint_t **h)
 {
 	size_t count = 0;
-	listp_t *lst, *new, *tmp;
+	listp_t *tmp, *new, *add;
 	listint_t *lst;
 
-	lst = NULL;
+	tmp = NULL;
 	while (*h != NULL)
 	{
 		new = malloc(sizeof(listp_t));
@@ -43,16 +43,16 @@ size_t free_listint_safe(listint_t **h)
 		if (new == NULL)
 			exit(98);
 		new->p = (void *)*h;
-		new->next = lst;
-		lst = new;
-		tmp = lst;
-		while (tmp->next != NULL)
+		new->next = tmp;
+		tmp = new;
+		add = tmp;
+		while (add->next != NULL)
 		{
-			tmp = tmp->next;
-			if (*h == tmp->p)
+			add = add->next;
+			if (*h == add->p)
 			{
 				*h = NULL;
-				free_listp2(&lst);
+				free_listp2(&tmp);
 				return (count);
 			}
 		}
@@ -62,7 +62,7 @@ size_t free_listint_safe(listint_t **h)
 		count++;
 	}
 	*h = NULL;
-	free_listp2(&lst);
+	free_listp2(&tmp);
 	return (count);
 }
 
